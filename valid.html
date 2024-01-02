@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function validate() {
+            var fn = document.getElementById('nm');
+            var fn_err = document.getElementById('nm_err');
+            var mn = document.getElementById('mn');
+            var mn_err = document.getElementById('mn_err');
+            var em = document.getElementById('em');
+            var em_err = document.getElementById('em_err');
+            var pw = document.getElementById('pw');
+            var pw_err = document.getElementById('pw_err');
+            var cpw = document.getElementById('cpw');
+            var cpw_err = document.getElementById('cpw_err');
+            var v_fn, v_mn, v_em, v_pw, v_cpw;  // Declare these variables outside of the if-else blocks to make them accessible
+            
+            if (fn.value == "") {
+                fn_err.innerHTML = "Name is a required field";
+                fn_err.style.color = "red";
+                fn.style.border = "1px solid red";
+                v_fn = false;
+            } else {
+                var reg_fn = /^[a-zA-Z ]{2,30}$/;
+                var result = reg_fn.test(fn.value);
+                if (result == false) {
+                    fn_err.innerHTML =
+                        "Name contains only letters, and the length should be between 2 and 30 characters";
+                    fn_err.style.color = "red";
+                    fn.style.border = "1px solid red";
+                    v_fn = false;
+                } else {
+                    fn_err.innerHTML = "";
+                    v_fn = true;
+                }
+            }
+            
+            if (mn.value == "") {
+                mn_err.innerHTML = "Mobile number is a required field";
+                mn_err.style.color = "red";
+                mn.style.border = "1px solid red";
+                v_mn = false;
+            } else {
+                var reg_mn = /^[0-9]{10}$/;
+                var result = reg_mn.test(mn.value);
+                if (result == false) {
+                    mn_err.innerHTML =
+                        "Mobile number should contain only 10 digits";
+                    mn_err.style.color = "red";
+                    mn.style.border = "1px solid red";
+                    v_mn = false;
+                } else {
+                    mn_err.innerHTML = "";
+                    v_mn = true;
+                }
+            }
+            
+            if (em.value == "") {
+                em_err.innerHTML = "Email is a required field";
+                em_err.style.color = "red";
+                em.style.border = "1px solid red";
+                v_em = false;
+            } else {
+                var reg_em = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                var result = reg_em.test(em.value);
+                if (result == false) {
+                    em_err.innerHTML =
+                        "Email is not valid";
+                    em_err.style.color = "red";
+                    em.style.border = "1px solid red";
+                    v_em = false;
+                } else {
+                    em_err.innerHTML = "";
+                    v_em = true;
+                }
+            }
+            
+            if (pw.value == "") {
+                pw_err.innerHTML = "Password is a required field";
+                pw_err.style.color = "red";
+                pw.style.border = "1px solid red";
+                v_pw = false;
+            } else {
+                var reg_pw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+                var result = reg_pw.test(pw.value);
+                if (result == false) {
+                    pw_err.innerHTML =
+                        "Password is not valid";
+                    pw_err.style.color = "red";
+                    pw.style.border = "1px solid red";
+                    v_pw = false;
+                } else {
+                    pw_err.innerHTML = "";
+                    v_pw = true;
+                }
+            }
+
+            if (cpw.value == "") {
+                cpw_err.innerHTML = "Confirm Password is a required field";
+                cpw_err.style.color = "red";
+                cpw.style.border = "1px solid red";
+                v_cpw = false;
+            } else {
+                // Check if passwords match
+                if (cpw.value !== pw.value) {
+                    cpw_err.innerHTML = "Passwords do not match";
+                    cpw_err.style.color = "red";
+                    cpw.style.border = "1px solid red";
+                    v_cpw = false;
+                } else {
+                    cpw_err.innerHTML = "";
+                    v_cpw = true;
+                }
+            }
+            
+            if (v_fn && v_mn && v_em && v_pw && v_cpw) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <form action="" onsubmit="return validate()">
+        Enter your name: <input type="text" name="nm1" id="nm">
+        <span id="nm_err"></span>
+        <br>
+        Enter Mobile number: <input type="text" name="mn1" id="mn">
+        <span id="mn_err"></span>
+        <br>
+        Enter email: <input type="text" name="em1" id="em">
+        <span id="em_err"></span>
+        <br>
+        Password: <input type="password" name="pass1" id="pw">
+        <span id="pw_err"></span>
+        <br>
+        Confirm Password: <input type="password" name="cpass1" id="cpw">
+        <span id="cpw_err"></span>
+        <br>
+        <input type="submit" value="Register">
+    </form>
+</body>
+<style>  body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('https://shorturl.at/kEHNS'); /* Replace 'your-image-url.jpg' with the actual path to your image */
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+span {
+    display: block;
+    color: red;
+    margin-top: -8px;
+    margin-bottom: 16px;
+}
+
+input[type="submit"] {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Add styles for dark mode */
+body.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+form.dark-mode {
+    background-color: #444;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+input.dark-mode {
+    background-color: #555;
+    color: #fff;
+    border: 1px solid #666;
+}
+
+span.dark-mode {
+    color: #ff5050;
+}
+
+input[type="submit"].dark-mode {
+    background-color: #00cc66;
+    color: #fff;
+}
+
+input[type="submit"].dark-mode:hover {
+    background-color: #00b359;
+}
+</style>
+
+</html>
