@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Text Box Example</title>
+</head>
+<body>
+
+
+
+<style>body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  input[type="text"] {
+    width: calc(100% - 16px);
+    padding: 8px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  input[type="button"] {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type="button"]:hover {
+    background-color: #45a049;
+  }
+  
+  #ans,
+  #tableResult {
+    margin-top: 20px;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+    
+  }
+  td,th{border: 1px;}
+  </style>
+<p id="ans">Your table</p>
+
+<form>
+    <label for="r1">Enter number of rows:</label>
+    <input type="text" id="r1" name="r1">
+    <br>
+    <label for="c1">Enter number of columns:</label>
+    <input type="text" id="c1" name="c1">
+    <br><br>
+    <input type="button" value="Generate Table" onclick="table()">
+</form>
+
+<p id="tableResult"></p>
+
+<script>
+  function multi_num() {
+    alert("hello");
+    var n = parseInt(document.getElementById('n1').value);
+    var result = "";
+
+    for (var i = 1; i <= 20; i++) {
+      result = result + n + " * " + i + " = " + n * i + "<br>";
+    }
+
+    document.getElementById('ans').innerHTML = result;
+  }
+
+  function table() {
+    alert("hello");
+    var c = parseInt(document.getElementById('c1').value);
+    var r = parseInt(document.getElementById('r1').value);
+    var result = "<table>";
+
+    for (var i = 1; i <= r; i++) {
+      result += "<tr>";
+      for (var j = 1; j <= c; j++) {
+        result += "<td>" + "</td>";
+      }
+      result += "</tr>";
+    }
+    result += "</table>";
+    document.getElementById('tableResult').innerHTML = result;
+  }
+</script>
+
+</body>
+</html>
